@@ -23,7 +23,12 @@ public class LarkIdentityProviderFactory extends AbstractIdentityProviderFactory
 
     @Override
     public LarkIdentityProvider create(KeycloakSession session, IdentityProviderModel model) {
-        return new LarkIdentityProvider(session, new OAuth2IdentityProviderConfig(model));
+        return new LarkIdentityProvider(session, new LarkIdentityProviderConfig(model));
+    }
+
+    @Override
+    public IdentityProviderModel createConfig() {
+        return new LarkIdentityProviderConfig();
     }
 
     @Override
